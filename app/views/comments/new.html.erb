@@ -1,0 +1,14 @@
+<body class="bg-info">
+  <%= render 'layouts/header' %>
+  <%= Post.find(params[:id]).id %>
+  <h5 align="center">Comment here </h5>
+  <div class="center" align="center">
+    <%= form_for Comment.new do |x| %>
+      <%= x.text_area(:text, placeholder: "Write your comment") %>
+      <br>
+      <%= hidden_field_tag(:id , Post.find(params[:id]).id) %>
+
+      <%= x.submit "Comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</body>

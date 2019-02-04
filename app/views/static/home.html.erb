@@ -12,7 +12,7 @@
         <h5>Posts created by you: <%= current_u_ser.posts.count %></h5>
         <ol class="list-group">
           <% @all.each do |x| %>
-            <li class="list-group-item list-group-item-primary" align="center"><%= x.text %></li>
+            <li class="list-group-item list-group-item-primary" align="center"><%= link_to x.text , post_path(id: x.id) %></li>
           <% end %>
         </ol>
       </div>

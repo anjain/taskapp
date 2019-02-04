@@ -1,0 +1,21 @@
+<body class="bg-info">
+  <%= render 'layouts/header' %>
+  <div class="center" align="center">
+    <%= @post.text %>
+  </div>
+  <br>
+  <h4 align="center">Comments for this post:</h4>
+
+    <div align="center">
+      <%= link_to "Comment on this post" , new_comment_path(id: @post.id) , class: "btn btn-primary" %>
+    </div>
+
+  <br>
+  <table align="center" border="2"  class="table table-hover" width="50%">
+  <% @comment.each do |x| %>
+    <tr>
+      <td align="center"><%= x.text %></td>
+    </tr>
+  <% end %>
+  </table>
+</body>

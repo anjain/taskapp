@@ -18,6 +18,21 @@ class PostController < ApplicationController
       redirect_to('/newpost')
     end
   end
+
+  def home
+    if (u_ser_signed_in?)
+      @post = Post.find(params[:id])
+      @comment = Comment.where(post_id: (params[:id])).order('created_at')
+    else
+      redirect_to(root_path)
+    end
+  end
+
+  def index
+    if u_ser_signed_in?
+      @allposts = current_u_ser.posts.all.order("created_at DESC")
+  end
+  end
   private
 
     def post_params

@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get '/user' => 'users#index'
   get '/u_sers/password/new'
   get '/newpost' =>'post#new'
-  post '/post' => 'post#home'
+  get '/post' => 'post#home'
   post  '/posts' => 'post#create'
-get '/user_path/user/id' => 'users#index'
-get '/user_path/user/:id' => 'users#index'
+  get '/user_path/user/id' => 'users#index'
+  get '/user_path/user/:id' => 'users#index'
 
   resources :posts
+  resources :comments
 as :user do
   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
   put 'users' => 'devise/registrations#update', :as => 'user_registration'
