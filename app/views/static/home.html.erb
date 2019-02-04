@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body class="bg-info">
+    <%= render 'layouts/header' %>
+    <% if u_ser_signed_in? %>
+      <h1 align="center">Welcome <%=current_u_ser.email%></h1> <br><br>
+      <div align="center"> <%= link_to "Create a post", newpost_path, class: "btn btn-lg btn-primary" %></div>
+      <br>
+      <div class="center">
+        <h5>Posts created by you: <%= current_u_ser.posts.count %></h5>
+        <ol class="list-group">
+          <% @all.each do |x| %>
+            <li class="list-group-item list-group-item-primary" align="center"><%= x.text %></li>
+          <% end %>
+        </ol>
+      </div>
+    <% else %>
+      <h1 align="center">Welcome to the test assignment</h1> <br><br>
+      <div align="center"> <%= link_to "Sign up now!", new_u_ser_registration_path, class: "btn btn-lg btn-primary" %></div>
+    <% end %>
+  </body>
+</html>

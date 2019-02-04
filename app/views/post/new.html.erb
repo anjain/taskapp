@@ -1,0 +1,11 @@
+<body class="bg-info">
+<%= render 'layouts/header' %>
+<h1 align="center">Create new post</h1>
+<div class="center" align="center">
+<%= form_for @post do |f| %>
+<%= f.text_area(:text, size: '50x5', placeholder: "Write Something...") %>
+<br>
+<%= f.submit "Create" , class: "btn navbar btn-primary"  %>
+  <% end %>
+  </div>
+  </body>
