@@ -4,7 +4,20 @@
   <h1 align="center">All Users</h1>
   <ol class="list-group list-group-flush" align="center">
     <% @users.each do |user| %>
-      <li class="list-group-item"><%= link_to user.email , user_path(id: user.id) %></li>
+      <li class="list-group-item"><%= link_to user.email , user_path(id: user.id) %>
+      <% if (Request.exists?(cid: current_u_ser.id) && (Request.exists?(uid: user.id))) %>
+        <div align="right">
+          <%= link_to "Cancel Request" , cancelrequest_path(id: user.id) , class: "btn btn-primary"%>
+        </div>
+      <% else %>
+        <div align="right">
+          <%= link_to "Add Friend" , addfriend_path(id: user.id) , class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <% if current_u_ser.email=='vm96@rediffmail.com' %>
+        <%= link_to "delete" , user_destroy_path(id: user.id) %>
+      <% end %>
+      </li>
     <%end%>
   </ol>
   </div>

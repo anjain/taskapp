@@ -12,7 +12,18 @@ Rails.application.routes.draw do
   post  '/posts' => 'post#create'
   get '/user_path/user/id' => 'users#index'
   get '/user_path/user/:id' => 'users#index'
+  get '/user_destroy' => 'users#destroy'
+  get '/post_destroy' => 'post#destroy'
+  get '/post_edit' => 'post#edit'
+  post '/post_update' => 'post#update'
+  get '/like_like' => 'likes#like'
+  get '/like_unlike' => 'likes#unlike'
+  get '/requests' => 'requests#index'
+  get '/addfriend' =>'requests#createrequest'
+  get 'cancelrequest' => 'requests#cancelrequest'
+  get '/accept' => 'requests#acceptrequest'
 
+  resources :likes
   resources :posts
   resources :comments
 as :user do

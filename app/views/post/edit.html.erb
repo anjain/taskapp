@@ -1,0 +1,18 @@
+<body class="bg-info">
+  <%= render 'layouts/header' %>
+  <div class="center" align="center">
+    <h4 align="center">Edit your post</h4>
+    <%= form_for Post.new, :url => post_update_path do |x| %>
+      <%= x.text_area(:text, placeholder: "Write here...") %>
+      <br>
+      <%= hidden_field_tag(:id , Post.find(params[:id]).id) %>
+
+      <%= x.submit "Save Changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+
+
+
+
+</body>

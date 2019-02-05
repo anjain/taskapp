@@ -2,11 +2,16 @@
   <div class="container">
     <h1 align="center">
      <b><%= link_to "Assignment Application", root_path, id: "logo" %></b>
+      <% if current_u_ser.try(:email)=="vm96@rediffmail.com" %>
+        <h5 align="center" style="color:#FF0;">How you doing admin ? </h5>
+      <% end %>
+     end
     </h1>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if u_ser_signed_in? %>
           <li><%= link_to "Dashboard",   root_path %></li>
+          <li><%= link_to "Friend Requests", requests_path %></li>
           <li><%= link_to "Users",   users_path_url %></li>
           <li><%= link_to "Update Details", edit_u_ser_registration_path %></li>
           <li><%= link_to "Log out", destroy_u_ser_session_path, method: :delete %></li>

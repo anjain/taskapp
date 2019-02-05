@@ -1,21 +1,44 @@
 <body class="bg-info">
   <%= render 'layouts/header' %>
-  <div class="center" align="center">
-    <%= @post.text %>
-  </div>
-  <br>
-  <h4 align="center">Comments for this post:</h4>
 
-    <div align="center">
-      <%= link_to "Comment on this post" , new_comment_path(id: @post.id) , class: "btn btn-primary" %>
+  <% unless @post.nil?%>
+    <div class="center" align="center">
+      <%= @post.text %>
     </div>
-
-  <br>
-  <table align="center" border="2"  class="table table-hover" width="50%">
-  <% @comment.each do |x| %>
-    <tr>
-      <td align="center"><%= x.text %></td>
-    </tr>
+  <% else %>
+    <div class="center" align="center">
+      <p>No Posts yet.</p>
+    </div>
   <% end %>
-  </table>
+  <br>
+  <% if (Like.where(uid: current_u_ser.id).where(pid: @post.id).exists?) %>
+    <div align="center">
+      <%= link_to "Unlike" , like_unlike_path(id: @post.id)%>
+    </div>
+  <% else %>
+    <div align="center">
+      <%= link_to "Like" , like_like_path(id: @post.id)%>
+    </div>
+  <% end %>
+  <%= render 'layouts/comment' %>
+  <% unless @post.nil?%>
+    <h4 align="center">Comments for this post:</h4>
+
+    <br>
+    <table align="center" border="2"  class="table table-hover">
+    <% @comment.each do |x| %>
+      <tr>
+        <td align="center"><%= x.text %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% else %>
+    <h4 align="center">Comments for this post:</h4>
+    <br>
+    <table align="center" border="2"  class="table table-hover">
+      <tr>
+        <td align="center">No Comment's</td>
+      </tr>
+    </table>
+  <% end %>
 </body>

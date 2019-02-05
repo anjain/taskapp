@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190204061442) do
+ActiveRecord::Schema.define(version: 20190205122027) do
+
+  create_table "accepteds", force: :cascade do |t|
+    t.integer "sid"
+    t.integer "rid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
@@ -20,12 +27,27 @@ ActiveRecord::Schema.define(version: 20190204061442) do
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "pid"
+    t.integer "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "text"
     t.integer "u_ser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "title"
     t.index ["u_ser_id"], name: "index_posts_on_u_ser_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "cid"
+    t.integer "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "u_sers", force: :cascade do |t|
