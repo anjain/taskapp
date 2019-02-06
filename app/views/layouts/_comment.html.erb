@@ -1,5 +1,6 @@
 <% Post.find(params[:id]).id %>
-
+  <div align="center">
+  <br>
     <%= form_for Comment.new do |x| %>
       <%= x.text_area(:text, placeholder: "Write your comment") %>
       <br>
@@ -7,3 +8,5 @@
 
       <%= x.submit "Comment", class: "btn btn-primary" %>
     <% end %>
+  </div>
+  <br>

@@ -1,0 +1,63 @@
+<body class="bg-info">
+  <%= render 'layouts/header' %>
+  <% @temp1.each do |x| %>
+    <% Post.where(u_ser_id: x.rid).each do |y| %>
+      <div class="centernew bg-warning" align="center">
+        <% if y.title.nil? %>
+          <h3  class=" " style="color: #000;">No title to this post</h3>
+        <% else %>
+          <h3  class=" " style="color: #000;"><%= y.title %></h3>
+        <% end %>
+        <h5><%= y.text %></h5>
+        <br>
+        <%= image_tag y.avatar.url %>
+      </div>
+      <br>
+    <% end %>
+    <br>
+    <% Post.where(u_ser_id: x.sid).each do |y| %>
+      <div class="centernew bg-warning" align="center">
+        <% if y.title.nil? %>
+          <h3  class=" " style="color: #000;">No title to this post</h3>
+        <% else %>
+          <h3  class=" " style="color: #000;"><%= y.title %></h3>
+        <% end %>
+        <h5><%= y.text %></h5>
+        <br>
+        <%= image_tag y.avatar.url %>
+      </div>
+      <br>
+    <% end %>
+    <br>
+  <% end %>
+  <% @temp2.each do |x| %>
+    <% Post.where(u_ser_id: x.sid).each do |y| %>
+      <div class="centernew bg-warning" align="center">
+        <% if y.title.nil? %>
+          <h3  class=" " style="color: #000;">No title to this post</h3>
+        <% else %>
+          <h3  class=" " style="color: #000;"><%= y.title %></h3>
+        <% end %>
+        <h5><%= y.text %></h5>
+        <br>
+        <%= image_tag y.avatar.url %>
+      </div>
+      <br>
+    <% end %>
+    <br>
+    <% Post.where(u_ser_id: x.rid).each do |y| %>
+      <div class="centernew bg-warning" align="center">
+        <% if y.title.nil? %>
+          <h3  class=" " style="color: #000;">No title to this post</h3>
+        <% else %>
+          <h3  class=" " style="color: #000;"><%= y.title %></h3>
+        <% end %>
+        <h5><%= y.text %></h5>
+        <br>
+        <%= image_tag y.avatar.url %>
+      </div>
+      <br>
+    <% end %>
+    <br>
+  <% end %>
+</body>

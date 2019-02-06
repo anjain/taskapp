@@ -10,6 +10,7 @@ class PostController < ApplicationController
 
   def create
     if u_ser_signed_in?
+      @post = Post.create(post_params)
       @post = current_u_ser.posts.build(post_params)
     end
     if @post.save
@@ -30,10 +31,11 @@ class PostController < ApplicationController
 #Comment.create(text: @comment , post_id: @id)
   def update
     @id = Post.find(params[:id]).destroy
-    @text = params.require(:post).permit(:text)
-    @text = @text[:text]
-    Post.create(text: @text , u_ser_id: current_u_ser.id)
-    redirect_to(root_path)
+    #@text = params.require(:post).permit(:text , :title , :avatar)
+    #@text = @text[:text]
+    #Post.create(text: @text , u_ser_id: current_u_ser.id)
+    create
+    #redirect_to(root_path)
   end
 
   def edit
@@ -62,6 +64,6 @@ class PostController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:text)
+      params.require(:post).permit(:text , :title , :avatar)
     end
 end

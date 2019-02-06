@@ -9,6 +9,7 @@ gem 'cancancan', '~> 2.0'
 gem 'rails', '~> 5.1.6'
 gem 'devise'
 gem 'bootstrap-sass', '3.3.7'
+gem "paperclip", "~> 6.0.0"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

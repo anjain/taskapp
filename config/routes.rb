@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/addfriend' =>'requests#createrequest'
   get 'cancelrequest' => 'requests#cancelrequest'
   get '/accept' => 'requests#acceptrequest'
+  get '/feed' => 'static#feed'
 
   resources :likes
   resources :posts

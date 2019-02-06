@@ -4,10 +4,13 @@
     No friend Requests.
   <% else %>
     <h4><%= current_u_ser.email %>, you have <%= @requests.count %> friend request(s)</h4>
+    <br>
     <% @requests.each do |x| %>
       <%= USer.find_by(id: x.cid).email %>
       <%= link_to "Cancel Request" , cancelrequest_path(id: current_u_ser.id) , class: "btn btn-primary" %>
-      <%= link_to "Accept Request" , "#" , class: "btn btn-primary" %>
+      <%= link_to "Accept Request" , accept_path(id: USer.find_by(id: x.cid)) , class: "btn btn-primary" %>
+      <br>
+      <br>
     <% end %>
   <% end %>
 </body>

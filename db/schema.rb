@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190205122027) do
+ActiveRecord::Schema.define(version: 20190206121201) do
 
   create_table "accepteds", force: :cascade do |t|
     t.integer "sid"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 20190205122027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "title"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["u_ser_id"], name: "index_posts_on_u_ser_id"
   end
 
@@ -58,6 +62,10 @@ ActiveRecord::Schema.define(version: 20190205122027) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_u_sers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_u_sers_on_reset_password_token", unique: true
   end

@@ -18,7 +18,11 @@ class RequestsController < ApplicationController
   end
 
   def acceptrequest
-
+    @sid = USer.find(params[:id])
+    Accepted.create(sid: @sid.id , rid: current_u_ser.id)
+    Request.where(cid: @sid.id).delete_all
+    Request.where(uid: @sid.id).delete_all
+    redirect_to(root_path)
   end
 
 end

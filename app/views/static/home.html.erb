@@ -12,7 +12,13 @@
         <h5>Posts created by you: <%= current_u_ser.posts.count %></h5>
         <ol class="list-group">
           <% @all.each do |x| %>
-            <li class="list-group-item list-group-item-primary" align="center"><%= link_to x.text , post_path(id: x.id) %><% if current_u_ser.id==x.u_ser_id %>
+            <li class="list-group-item list-group-item-primary" align="center">
+            <% if x.title.nil? %>
+              <%= link_to "No title to this post" , post_path(id: x.id) %>
+            <% else %>
+              <%= link_to x.title , post_path(id: x.id) %>
+            <% end %>
+            <% if current_u_ser.id==x.u_ser_id %>
                 <br>
                 | <%= link_to "Edit" , post_edit_path(id: x.id) %> | <%= link_to "Delete" , post_destroy_path(id: x.id) %> |
             <% end %></li>
